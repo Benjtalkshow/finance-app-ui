@@ -1,9 +1,11 @@
 import ExpenseBlock from "@/components/ExpenseBlock";
 import Header from "@/components/Header";
 import IncomeBlock from "@/components/IncomeBlock";
+import SpendingBlock from "@/components/spendingBlock";
 import Colors from "@/constants/Colors";
 import ExpenseList from "@/data/expenses.json";
 import IncomeList from "@/data/income.json";
+import SpendingList from "@/data/spending.json";
 import { Stack } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
@@ -91,6 +93,7 @@ const Page = () => {
 
           <ExpenseBlock expenseList={ExpenseList} />
           <IncomeBlock incomeList={IncomeList} />
+          <SpendingBlock spendingList={SpendingList} />
         </ScrollView>
       </View>
     </>
