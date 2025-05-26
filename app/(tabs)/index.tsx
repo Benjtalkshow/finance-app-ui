@@ -1,9 +1,11 @@
+import ExpenseBlock from "@/components/ExpenseBlock";
 import Header from "@/components/Header";
 import Colors from "@/constants/Colors";
 import { Stack } from "expo-router";
 import React from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
+import ExpenseList   from "@/data/expenses.json"
 
 
 const Page = () => {
@@ -84,6 +86,8 @@ const Page = () => {
               />
             </View>
           </View>
+
+          <ExpenseBlock expenseList={ExpenseList} />
         </ScrollView>
       </View>
     </>
