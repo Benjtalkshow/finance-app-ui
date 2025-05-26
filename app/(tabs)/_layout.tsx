@@ -1,45 +1,100 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import Colors from "@/constants/Colors";
+import { AntDesign, FontAwesome, SimpleLineIcons } from "@expo/vector-icons";
+import { Tabs } from "expo-router";
+import React from "react";
+import { View } from "react-native";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const Layout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
+    <>
+      <Tabs
+        screenOptions={{
+          tabBarStyle: {
+            width:165,
+            backgroundColor: Colors.grey,
+            position: "absolute",
+            bottom: 40,
+            justifyContent: "center",
+            alignSelf: "center",
+            height: 63,
+            marginHorizontal: 113,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+            paddingTop: 10,
+            borderRadius: 40,
+            borderWidth: 1,
+            borderTopWidth: 1,
+            borderColor: "#333",
+            borderTopColor: "#333",
           },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarShowLabel: false,
+          tabBarInactiveTintColor: "#999",
+          tabBarActiveTintColor: Colors.white,
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="index"
+          options={{
+            tabBarIcon: ({ color, size, focused }) => (
+              <View
+                style={{
+                  padding: 5,
+                  borderRadius: 25,
+                  width: 40,
+                  height: 40,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: focused ? Colors.tintColor : Colors.grey,
+                }}
+              >
+                <SimpleLineIcons name="pie-chart" size={24} color={color} />
+              </View>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="transactions"
+          options={{
+            tabBarIcon: ({ color, size, focused }) => (
+              <View
+                style={{
+                  padding: 5,
+                  borderRadius: 25,
+                  width: 40,
+                  height: 40,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: focused ? Colors.tintColor : Colors.grey,
+                }}
+              >
+                <AntDesign name="swap" size={18} color={color} />
+              </View>
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            tabBarIcon: ({ color, size, focused }) => (
+              <View
+                style={{
+                  padding: 5,
+                  borderRadius: 25,
+                  width: 40,
+                  height: 40,
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: focused ? Colors.tintColor : Colors.grey,
+                }}
+              >
+                <FontAwesome name="user-o" size={18} color={color} />
+              </View>
+            ),
+          }}
+        />
+      </Tabs>
+    </>
   );
-}
+};
+
+export default Layout;

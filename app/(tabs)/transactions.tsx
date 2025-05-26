@@ -1,4 +1,3 @@
-import Header from '@/components/Header'
 import Colors from '@/constants/Colors'
 import { Stack } from 'expo-router'
 import React from 'react'
@@ -7,9 +6,9 @@ import { StyleSheet, Text, View } from 'react-native'
 const Page = () => {
   return (
     <>
-      <Stack.Screen options={{ header : ()=> <Header / > }} />
+      <Stack.Screen options={{ headerShown: false }} />
       <View style={styles.container}>
-        <Text>Page</Text>
+        <Text style={styles.text}>Transactions</Text>
       </View>
     </>
   )
@@ -20,7 +19,11 @@ export default Page
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.black,
-    paddingHorizontal: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Colors.black
+  },
+  text: {
+    color: Colors.white,
   }
 })
